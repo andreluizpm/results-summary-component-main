@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Results summary component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @font-face {
+        font-family: hanken;
+        src: url(assets/fonts/HankenGrotesk-VariableFont_wght.ttf);
+      }
+
+      * {
+        font-family: hanken;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      main {
+        display: flex;
+        height: 400px;
+        box-shadow: 10px 2px 20px hsl(221, 100%, 96%);
+        background-color: none;
+        border-radius: 35px 35px 25px 25px;
+      }
+
+      .container-result {
+        height: 400px;
+        width: 300px;
+        border-radius: 30px;
+        background: radial-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+        text-align: center;
+        color: hsl(221, 100%, 96%, 0.7);
+      }
+      .circle {
+        width: 55%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        height: 150px;
+        background: linear-gradient(
+          hsla(256, 72%, 46%, 1),
+          50%,
+          hsla(256, 72%, 46%, 0.5),
+          75%,
+          hsla(241, 72%, 46%, 0)
+        );
+      }
+      .circle-conteudo {
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .circle h3 {
+        font-size: 60px;
+        color: white;
+        font-weight: 800;
+      }
+      .container-result h2 {
+        padding: 20px;
+      }
+      .container-result p {
+        margin: auto;
+        width: 80%;
+      }
+      #great {
+        color: white;
+      }
+      .container-summary {
+        height: 400px;
+        width: 300px;
+        border-radius: 25px;
+        background: hsl(0, 0%, 100%);
+      }
+      .container-summary h2 {
+        padding: 20px;
+        color: hsl(224, 30%, 27%);
+      }
+      .container-card {
+        padding: 20px;
+      }
+
+      .card-reaction {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        border-radius: 5px;
+        background-color: hsl(0, 100%, 67%, 0.2);
+        height: 40px;
+      }
+      .reaction {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 10px;
+        color: hsl(0, 100%, 67%, 1);
+      }
+      .card-memory {
+        display: flex;
+        align-items: center;
+        margin-top: 13px;
+        justify-content: space-between;
+        width: 95%;
+        border-radius: 5px;
+        background-color: hsl(39, 100%, 56%, 0.2);
+        height: 40px;
+      }
+      .memory {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 10px;
+        color: hsl(39, 100%, 56%, 1);
+      }
+      .card-verbal {
+        display: flex;
+        align-items: center;
+        margin-top: 13px;
+        justify-content: space-between;
+        width: 95%;
+        border-radius: 5px;
+        background-color: hsl(166, 100%, 37%, 0.2);
+        height: 40px;
+      }
+      .verbal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 10px;
+        color: hsl(166, 100%, 37%);
+      }
+      .card-visual {
+        display: flex;
+        align-items: center;
+        margin-top: 13px;
+        justify-content: space-between;
+        width: 95%;
+        border-radius: 5px;
+        background-color: hsl(234, 85%, 45%, 0.2);
+        height: 40px;
+      }
+      .visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 10px;
+        color: hsl(234, 85%, 45%);
+      }
+      .score {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        justify-content: center;
+        gap: 4px;
+        font-size: 18px;
+      }
+      #score-current {
+        color: hsl(224, 30%, 27%, 0.9);
+        font-weight: bold;
+      }
+
+      .score {
+        color: hsl(224, 30%, 27%, 0.3);
+      }
+
+      .button {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .button a{
+        border-radius: 45px;
+        padding: 10px 80px;
+        color: hsl(221, 100%, 96%, 1);
+        background-color: hsl(224, 30%, 27%);
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .button a:hover{
+        background: linear-gradient( hsla(241, 72%, 46%, 0.9) 10%,hsla(256, 72%, 46%, 1));
+      }
+
+      @media  (max-width: 750px){
+        body {
+            display: inline;
+         
+        }
+            main{
+                display: flex;
+                width: 100%;
+                box-shadow: none;
+                flex-direction: column;
+            }
+        .container-result {
+            width: 100%;
+            border-radius: 0 0 25px 25px;
+            padding-bottom: 50px;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+        }
+        .container-summary{
+            width: 100%;
+        }
+        .button{
+            height: 100px;
+            
+            width: 90%;
+        }
+        .card-reaction{
+            height:  50px;
+        }
+        .card-memory{
+            height: 50px;
+        }
+        .card-verbal{
+            height: 50px;
+        }
+        .card-visual{
+            height: 50px;
+        }
+        .button a{
+            padding: 15px 35%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container-result">
+        <h2>Your Result</h2>
+        <div class="circle">
+          <div class="circle-conteudo">
+            <h3>76</h3>
+            <p>of 100</p>
+          </div>
+        </div>
+        <h2 id="great">Great</h2>
+        <p>
+          You scored higher than 65% of the people who have taken these tests.
+        </p>
+      </div>
+      <div class="container-summary">
+        <h2>Summary</h2>
+        <div class="container-card">
+          <div class="card-reaction">
+            <div class="reaction">
+              <img src="assets/images/icon-reaction.svg" alt="reaction" />
+              <p>Reaction</p>
+            </div>
+            <div class="score">
+              <p id="score-current">80</p>
+              <p>/</p>
+              <p id="score-max">100</p>
+            </div>
+          </div>
+          <div class="card-memory">
+            <div class="memory">
+              <img src="assets/images/icon-memory.svg" alt="memory" />
+              <p>Memory</p>
+            </div>
+            <div class="score">
+              <p id="score-current">92</p>
+              <p>/</p>
+              <p id="score-max">100</p>
+            </div>
+          </div>
+          <div class="card-verbal">
+            <div class="verbal">
+              <img src="assets/images/icon-verbal.svg" alt="verbal" />
+              <p>Verbal</p>
+            </div>
+            <div class="score">
+              <p id="score-current">61</p>
+              <p>/</p>
+              <p id="score-max">100</p>
+            </div>
+          </div>
+          <div class="card-visual">
+            <div class="visual">
+              <img src="assets/images/icon-visual.svg" alt="verbal" />
+              <p>Visual</p>
+            </div>
+            <div class="score">
+              <p id="score-current">72</p>
+              <p>/</p>
+              <p id="score-max">100</p>
+            </div>
+          </div>
+        </div>
+        <div class="button">
+            <a href="">Continue</a>
+        </div>
+      </div>
+    </main>
+
+    <!--Your Result
+  76
+  of 100
+
+  Great
+  You scored higher than 65% of the people who have taken these tests.
+  
+  Summary
+
+  Reaction
+  80 / 100
+
+  Memory
+  92 / 100
+
+  Verbal
+  61 / 100
+
+  Visual
+  72 / 100
+
+  Continue
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> !-->
+  </body>
+</html>
